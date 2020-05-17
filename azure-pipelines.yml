@@ -15,11 +15,3 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$alschroe/pipelines-dotnet-core'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$alschroe/pipelines-dotnet-core/build.zip'
-    replaceExistingArchive: true
