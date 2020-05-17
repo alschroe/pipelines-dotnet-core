@@ -15,9 +15,11 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- task: DotNetCoreCLI@2
+  
+- task: AzureRmWebAppDeployment@4
   inputs:
-    command: publish
-    publishWebProjects: True
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'AzureInternal (921b1060-fc07-42c5-8bad-c255bbf99a42)'
+    appType: 'webApp'
+    WebAppName: 'devopsnet'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
