@@ -22,4 +22,12 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'AzureInternal (921b1060-fc07-42c5-8bad-c255bbf99a42)'
+    appType: 'webApp'
+    WebAppName: 'devopsnet'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
 - task: PublishBuildArtifacts@1
