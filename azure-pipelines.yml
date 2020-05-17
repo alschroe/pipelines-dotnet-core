@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
@@ -18,15 +18,8 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$d:/a/r1/a/'
+    rootFolderOrFile: '$alschroe/pipelines-dotnet-core'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$Build.zip'
+    archiveFile: '$alschroe/pipelines-dotnet-core/build.zip'
     replaceExistingArchive: true
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'AzureInternal (921b1060-fc07-42c5-8bad-c255bbf99a42)'
-    appType: 'webApp'
-    WebAppName: 'devopsnet'
-    packageForLinux: '$d:/a/r1/a//**/*.zip'
