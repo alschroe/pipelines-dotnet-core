@@ -49,4 +49,6 @@ steps:
     appName: 'devopsnet'
     appType: webApp
     package: $(System.DefaultWorkingDirectory)/**/*.zip    
+
+
 - task: PublishBuildArtifacts@1
